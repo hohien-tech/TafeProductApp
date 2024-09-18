@@ -14,6 +14,7 @@ namespace ProductApps
         private decimal delivery;
         private decimal totalCharge;
         private decimal totalChargeAfterWrap;
+        private decimal totalChargeAfterGST;
         private decimal wrapping;
         private decimal gst;
 
@@ -44,7 +45,11 @@ namespace ProductApps
             get { return totalChargeAfterWrap; }
             set { totalChargeAfterWrap = value; }
         }
-
+        public decimal TotalChargeAfterGST
+        {
+            get { return totalChargeAfterGST; }
+            set { totalChargeAfterGST = value; }
+        }
         private decimal Delivery
         {
             get { return delivery; }
@@ -86,6 +91,11 @@ namespace ProductApps
         public void calTotalChargeAfterWrap()
         {
             TotalChargeAfterWrap = Price * Quantity + 25 + 5;
+        }
+        //Calculate the total charge after GST
+        public void calTotalChargeAfterGST()
+        {
+            TotalChargeAfterGST = ((Price * Quantity) + 25 + 5)*110/100;
         }
     }
 }
